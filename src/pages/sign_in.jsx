@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 const SignInPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
