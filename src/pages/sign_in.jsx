@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import logo from '../assets/logo.png'
+import styles from './sign_in.module.css'
 const SignInPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -22,30 +24,21 @@ const SignInPage = () => {
     };
 
     return (
-        <div>
+        <>
+
+            <div className={styles.container}>
+                <img src={logo} alt="Centered Image" />
+            </div>
+            <h1 className={styles.name}>GymShark</h1>
+
             <h2>Sign In</h2>
-            <form onSubmit={handleSignIn}>
-                <div>
-                    <label htmlFor="email">Email:</label>
-                    <input
-                        type="email"
-                        id="email"
-                        value={email}
-                        onChange={handleEmailChange}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="password">Password:</label>
-                    <input
-                        type="password"
-                        id="password"
-                        value={password}
-                        onChange={handlePasswordChange}
-                    />
-                </div>
-                <button type="submit">Sign In</button>
-            </form>
-        </div>
+
+            <div class="container">
+                <label for="uname"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="uname" required />
+            </div>
+
+        </>
     );
 };
 
