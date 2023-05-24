@@ -24,21 +24,29 @@ const SignInPage = () => {
     };
 
     return (
-        <>
+        <div className={styles.body}>
 
             <div className={styles.container}>
                 <img src={logo} alt="Centered Image" />
             </div>
             <h1 className={styles.name}>GymShark</h1>
 
-            <h2>Sign In</h2>
 
-            <div class="container">
-                <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required />
+            <div class={styles.container2}>
+                <h2>Sign in</h2>
+                <label for="uname"><b>Email</b></label> <br />
+                <input type="text" placeholder="Enter your email" name="uname" required /><br />
+                <label for="uname"><b>Password</b></label> <br />
+                <input type="text" placeholder="Enter your password" name="uname" required />
+                <br />
+                <button class={styles.forgot}>Forgot Password?</button>
+
+                <button className={styles.button}>SIGN IN</button>
+                <button class={styles.Signup}>Sign-up!</button>
+
             </div>
+        </div>
 
-        </>
     );
 };
 
