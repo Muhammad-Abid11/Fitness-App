@@ -57,21 +57,7 @@
   color:#ff5d55;
   font-size: 1.4em;
 }
-.forgot{
-  display: block;
-  border-color: #e7e7e7;
-  color: #ff5d55;
-  border: none;
-  background-color: transparent;
-  font-weight: bold;
-  /* padding: 14px 28px; */
-  font-size: 1.3em;
-  margin-bottom:3.4em;
-  cursor: pointer;
-
-}
-
-input[type=text]{
+input{
   /* max-width: 500px; */
   min-width: 400px;
   padding: 12px 20px;
@@ -98,7 +84,7 @@ input[type=text]{
   cursor: pointer;
 }
 
-.Signup {
+.Signin {
   border-color: #e7e7e7;
   color: #ff5d55;
   border: none;
@@ -107,7 +93,7 @@ input[type=text]{
   padding: 14px 28px;
   font-size: 12px;
   cursor: pointer;
-
+  text-decoration: none;
 }
 
 
@@ -120,7 +106,7 @@ input[type=text]{
   max-width: 70%;
   margin-left: 4em;
 }
-  input[type=text]{
+  input{
     min-width: 350px;
   }
  .container2 h2 {
@@ -140,7 +126,7 @@ input[type=text]{
   max-width: 70%;
   margin-left: 3em;
 }
-  input[type=text]{
+  input{
     min-width: 320px;
   }
     .container2 h2 {
@@ -161,7 +147,7 @@ input[type=text]{
   max-width: 70%;
   margin-left: 2em;
 }
-  input[type=text]{
+  input{
     min-width: 300px;
   }
     .container2 h2 {
@@ -182,7 +168,7 @@ input[type=text]{
   min-width: 70%;
   margin-left: 2em;
 }
-  input[type=text]{
+  input{
     min-width: 20em;
   }
     .container2 h2 {

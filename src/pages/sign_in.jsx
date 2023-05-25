@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png'
 import styles from './sign_in.module.css'
 const SignInPage = () => {
@@ -35,14 +36,14 @@ const SignInPage = () => {
             <div class={styles.container2}>
                 <h2>Sign in</h2>
                 <label for="uname"><b>Email</b></label> <br />
-                <input type="text" placeholder="Enter your email" name="uname" required /><br />
+                <input type="email" placeholder="Enter your email" name="uname" required /><br />
                 <label for="uname"><b>Password</b></label> <br />
-                <input type="text" placeholder="Enter your password" name="uname" required />
+                <input type="password" placeholder="Enter your password" name="uname" required />
                 <br />
                 <button class={styles.forgot}>Forgot Password?</button>
 
                 <button className={styles.button}>SIGN IN</button>
-                <button class={styles.Signup}>Sign-up!</button>
+                <Link class={styles.Signup} to="/signup">Sign-up!</Link>
 
             </div>
         </div>
