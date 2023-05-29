@@ -1,56 +1,108 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import logo from '../assets/logo.png'
-import styles from './sign_up.module.css'
+import { useNavigate, Link } from 'react-router-dom';
+import logo from '../assets/logo.png';
+import styles from './sign_up.module.css';
+import { useContext } from 'react';
+import { Context } from '../context/ContextProvider';
+
+
 const SignUpPage = () => {
+    const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const { fullname } = useContext(Context);
+    const [passwordError, setPasswordError] = useState('');
+    const [emailError, setEmailError] = useState('');
+    const navigate = useNavigate();
 
-    const handleEmailChange = (e) => {
-        setEmail(e.target.value);
-    };
 
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value);
-    };
+    console.log(fullName, email, password)
+    const validateForm = (event) => {
+        event.preventDefault();
 
-    const handleSignIn = (e) => {
-        e.preventDefault();
-        // Perform sign-in logic here, such as calling an API or validating credentials
-        console.log('Email:', email);
-        console.log('Password:', password);
-        // Reset the form
-        setEmail('');
-        setPassword('');
+        if (password.length < 8) {
+            setPasswordError('Password should be at least 8 characters long');
+            return;
+        }
+        const passwordRegex = /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[\W_]).{8,}$/;
+        if (!passwordRegex.test(password)) {
+            setPasswordError(
+                'Password must contain a mixture of numbers, alphabets, and special characters'
+            );
+            return;
+        }
+        setPasswordError('');
+
+        const formData = {
+            fullName,
+            email,
+            password,
+        };
+        // Here, you can save the formData to localStorage, send it to an API, or use any other method to store the data.
+
+        // Redirect to the sign-in page
+        navigate('/');
     };
 
     return (
         <div className={styles.body}>
-
             <div className={styles.container}>
                 <img src={logo} alt="Centered Image" />
             </div>
             <h1 className={styles.name}>GymShark</h1>
 
-
-            <div class={styles.container2}>
+            <div className={styles.container2}>
                 <h2>Sign Up</h2>
-                <label for="uname"><b>Username</b></label> <br />
-                <input type="text" placeholder="Enter your Full Name" name="uname" required /><br />
-                <label for="uname"><b>Email Address</b></label> <br />
-                <input type="email" placeholder="Enter your email" name="uname" required /><br />
-                <label for="uname"><b>Password</b></label> <br />
-                <input type="password" placeholder="Enter your password" name="uname" required />
-                <br />
+                <form onSubmit={validateForm}>
+                    <label htmlFor="fullname">
+                        <b>Full Name</b>
+                    </label>
+                    <br />
+                    <input
+                        type="text"
+                        id="fullname"
+                        placeholder="Enter your Full Name"
+                        name="fullname"
+                        value={fullName}
+                        onChange={(e) => setFullName(e.target.value)}
+                        required
+                    />
+                    <br />
 
-                <button className={styles.button}>SIGN UP</button>
-                {/* <button class={styles.Signup}>Sign-in!</button> */}
-                <Link class={styles.Signin} to="/">Sign-in!</Link>
+                    <label htmlFor="email">
+                        <b>Email Address</b>
+                    </label>
+                    <br />
+                    <input type="email" id="email" placeholder="Enter your email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} required
+                    />
+                    <br />
+                    <span className={styles.error}>{emailError}</span>
 
+                    <label htmlFor="password">
+                        <b>Password</b>
+                    </label>
+                    <br />
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                        name="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                    <br />
+                    <span className={styles.error}>{passwordError}</span>
 
+                    <button className={styles.button} type="submit">
+                        SIGN UP
+                    </button>
+                    <Link className={styles.Signin} to="/">
+                        Sign-in!
+                    </Link>
+                </form>
             </div>
         </div>
-
     );
 };
 
